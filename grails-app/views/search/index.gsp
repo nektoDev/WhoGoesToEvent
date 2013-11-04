@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="layout" content="main">
+    <title>Тест</title>
+
+</head>
+
+<body>
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="bs-sidebar hidden-print affix" id="sidebar" >
+                <g:form url="[action: 'search']" >
+                    <h2>Параметры</h2>
+                    <div class="form-group">
+                        <label for="eventLink">Ссылка на событие</label>
+                        <g:textField name="filter.eventURL" id="eventLink" class="form-control" placeholder="Введи ссылку"/>
+                    </div>
+
+                    <g:submitToRemote value="Искать2"
+                                      class="btn btn-primary"
+                                      url="[action: 'search2']"
+                                      update="userlist"
+                                      onLoading="jQuery('#spinner').modal('show');"
+                                      onComplete="jQuery('#spinner').modal('hide');"
+                    />
+                    <g:submitToRemote value="Искать"
+                                      class="btn btn-primary"
+                                      url="[action: 'search']"
+                                      update="userlist"
+                                      onLoading="jQuery('#spinner').modal('show');"
+                                      onComplete="jQuery('#spinner').modal('hide');"
+                    />
+                </g:form>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+
+            <h1 class="page-header">About Us <small>It's Nice to Meet You!</small></h1>
+            <p>This is a great place to start off with a short and sweet description of your company, organization, or whatever purpose your website is serving. Keep it friendly, engaging, but short enough to where you won't lose your reader!</p>
+            <p>If you need a bit more space to describe what is going on, we recommend putting a picture in this section. Use the <code>pull-right</code> class on the image to make it look good!</p>
+
+            <h2 class="page-header">Название события</h2>
+
+            <div class="row" id="userlist">
+                <tmpl:layouts/vkUser user="${user}"/>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
