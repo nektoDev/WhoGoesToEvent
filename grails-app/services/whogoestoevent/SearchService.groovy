@@ -15,7 +15,7 @@ class SearchService {
         def usersJSON = response.users;
 
         usersJSON.each() {
-            Thread.sleep( 500);
+            Thread.sleep(500);
             vkUserList.add(vkApiService.usersGet(it));
         };
 
