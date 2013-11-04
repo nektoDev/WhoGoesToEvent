@@ -1,3 +1,8 @@
-This file was created by IntelliJ IDEA 12.1.6 for binding GitHub repository
-This file was modified by IntelliJ IDEA 12.1.6 for binding GitHub repository
-This file was modified by IntelliJ IDEA 12.1.6 for binding GitHub repository
+Simple Groovy&Grails application with Vk.Api. Weekend project.
+
+You can set some filter options and get information about people who goes to event at vk.com.
+You can find out how many gils from 18-20yo from Moscow goes to the party,
+choose the best by photo and know something interesting about she.
+Or just write a message.
+Or something else.
+
