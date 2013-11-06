@@ -10,7 +10,7 @@ class SearchService {
     List<VkUser> searchUsers(Filter filter) {
         List<VkUser> vkUserList = new ArrayList<VkUser>();
 
-        def response = vkApiService.groupsGetMembers(filter.getEventId());
+        def response = vkApiService.groupsGetMembers(filter.getEventID());
         def count = response.count;
         def usersJSON = response.users;
 

@@ -9,13 +9,13 @@
 <body>
 
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="bs-sidebar hidden-print affix" id="sidebar" >
                 <g:form url="[action: 'search']" >
                     <h2>Параметры</h2>
                     <div class="form-group">
-                        <label for="eventLink">Ссылка на событие</label>
-                        <g:textField name="filter.eventURL" id="eventLink" class="form-control" placeholder="Введи ссылку"/>
+                        <label for="eventLink">ID группы или события ВКонтакте</label>
+                        <g:textField name="filter.eventID" id="eventLink" class="form-control" placeholder="Например: insane_tea"/>
                     </div>
 
                     <g:submitToRemote value="Искать2"
@@ -36,7 +36,7 @@
             </div>
         </div>
 
-        <div class="col-md-9">
+        <div class="col-md-8">
 
             <h1 class="page-header">About Us <small>It's Nice to Meet You!</small></h1>
             <p>This is a great place to start off with a short and sweet description of your company, organization, or whatever purpose your website is serving. Keep it friendly, engaging, but short enough to where you won't lose your reader!</p>

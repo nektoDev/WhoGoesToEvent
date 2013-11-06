@@ -13,15 +13,9 @@ class SearchController {
     }
 
     def search() {
-        List<VkUser> vkUserList = new ArrayList<VkUser>();
+        Filter filter = new Filter(params?.filter);
+        List<VkUser> vkUserList = searchService.searchUsers(filter);
 
-        def response = vkApiService.groupsGetMembers("farbar");
-        def count = response.count;
-        def usersJSON = response.users;
-        usersJSON.each() {
-            Thread.sleep(500);
-            vkUserList.add(vkApiService.usersGet(it));
-        };
         render(template:"layouts/vkUser", collection: vkUserList, var: 'user') ;
     }
 
