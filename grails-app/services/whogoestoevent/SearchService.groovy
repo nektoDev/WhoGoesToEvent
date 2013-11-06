@@ -1,15 +1,15 @@
 package whogoestoevent
 
 class SearchService implements Serializable{
+    static scope = 'session'
 
     def vkApiService;
-    def vkUserListStorageService;
+
+    List<VkUser> vkUserList;
 
     List<VkUser> searchUsers(Filter filter) {
-        List<VkUser> result = new ArrayList<VkUser>();
 
-
-        vkUserListStorageService.setVkUserList(groupsGetAllMembers(filter.eventID));
+        vkUserList = groupsGetAllMembers(filter.eventID);
 
         return getUsersAt([0..14]);
     }
@@ -37,10 +37,10 @@ class SearchService implements Serializable{
         return vkUserList
     }
 
-    List<VkUser> getUsersAt(Range range) {
+    public List<VkUser> getUsersAt(Range range) {
         List<VkUser> result = new ArrayList<VkUser>();
 
-        vkUserListStorageService.getVkUserList().getAt(range).each() {
+        vkUserList.getAt(range).each() {
             it = vkApiService.usersGet(it.getId(), it);
             result.add(it);
             Thread.sleep(350);
