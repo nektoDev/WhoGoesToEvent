@@ -1,7 +1,7 @@
 package whogoestoevent
 
 class VkUser {
-    Integer id;
+    String id;
     String firstName;
     String lastName;
     String photo200;
@@ -11,6 +11,12 @@ class VkUser {
     static constraints = {
     }
 
+    VkUser(String id) {
+        this.id = id;
+    }
+
+    VkUser() {
+    }
 
     @Override
     public java.lang.String toString() {

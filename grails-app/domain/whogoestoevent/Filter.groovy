@@ -1,7 +1,7 @@
 package whogoestoevent
 
 class Filter {
-    String eventID = "http://vk.com/farbar";
+    String eventID = "farbar";
 
     static constraints = {
     }

@@ -14,12 +14,12 @@ import whogoestoevent.VkUser
 class VkApiService {
     def http = new HTTPBuilder("https://api.vk.com/method/")
 
-    VkUser usersGet(String id) {
+    VkUser usersGet(String id, VkUser vkUser = new VkUser()) {
 
         http.get(path: 'users.get', query: [user_ids: id, v: 5.2, fields:"photo_200,city,sex"])
                 { resp, json ->
                     def userJSON = json.response[0];
-                    VkUser vkUser = createVkUser(userJSON)
+                    vkUser = convertVkUser(userJSON, vkUser)
                     return vkUser;
                 }
     }
@@ -28,15 +28,14 @@ class VkApiService {
         usersGet(id.toString());
     }
 
-    def groupsGetMembers(String id) {
-        http.get(path: 'groups.getMembers', query: [group_id: id, count: 10])
+    def groupsGetMembers(String id, Integer count = 1000, Integer offset = 0) {
+        http.get(path: 'groups.getMembers', query: [group_id: id, count: count, offset: 0, order: 'asc'])
                 { resp, json ->
                     return json.response;
                 }
     }
 
-    private VkUser createVkUser(userJSON) {
-        VkUser vkUser = new VkUser();
+    private VkUser convertVkUser(userJSON,VkUser vkUser) {
         vkUser.id = userJSON.id;
         vkUser.lastName = userJSON.last_name;
         vkUser.firstName = userJSON.first_name;
