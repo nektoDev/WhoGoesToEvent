@@ -1,3 +1,5 @@
+package whogoestoevent
+
 import grails.converters.JSON
 import groovyx.net.http.HTTPBuilder
 import whogoestoevent.VkUser

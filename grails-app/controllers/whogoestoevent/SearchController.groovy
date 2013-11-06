@@ -1,7 +1,5 @@
 package whogoestoevent
 
-import grails.converters.JSON
-import net.sf.json.JSONObject
 
 class SearchController {
     def vkApiService;
@@ -24,5 +22,9 @@ class SearchController {
         List<VkUser> vkUserList = searchService.searchUsers(filter);
 
         render(template:"layouts/vkUser", collection: vkUserList, var: 'user') ;
+    }
+
+    def getPage(page) {
+
     }
 }
