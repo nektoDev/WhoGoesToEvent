@@ -45,25 +45,10 @@
             <h2 class="page-header">Название события</h2>
 
             <div class="row" id="userlist">
-                <tmpl:layouts/vkUser user="${user}"/>
-
-            </div>
-            <div class="row" id="page_${page}">
-                <tmpl:layouts/vkUser user="${user}"/>
-
             </div>
 
-            <g:form>
-                <g:hiddenField name="page" id="page" value="${page}"/>
-                <g:submitToRemote value="Еще"
-                                  class="btn btn-primary"
-                                  url="[action: 'getPage']"
-                                  update="page_${page}"
-                                  onLoading="jQuery('#spinner').modal('show');"
-                                  onComplete="jQuery('#page').value(jQuery('#page').value() + 1);jQuery('#spinner').modal('hide');"
-                />
-            </g:form>
         </div>
     </div>
+
 </body>
 </html>

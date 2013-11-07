@@ -48,11 +48,8 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-
 <g:javascript library="application"/>
 <r:layoutResources/>
-
-
 
 </body>
 </html>
