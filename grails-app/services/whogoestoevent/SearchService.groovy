@@ -18,7 +18,6 @@ class SearchService implements Serializable{
         List<VkUser> vkUserList = new ArrayList<VkUser>();
 
         def response = vkApiService.groupsGetMembers(eventID, 1);
-        print(response)
         Integer count = response.count as Integer;
 
         def i;
@@ -33,7 +32,6 @@ class SearchService implements Serializable{
 
             Thread.sleep(350);
         }
-        print(vkUserList.size())
         return vkUserList
     }
 
