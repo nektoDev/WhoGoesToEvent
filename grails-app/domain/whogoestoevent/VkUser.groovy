@@ -31,6 +31,10 @@ class VkUser {
     }
 
     boolean compareWithFilter(Filter filter) {
-        return this.sex.equals(filter.getSex())
+        if (filter.sex == null) {
+            return true;
+        } else {
+            return filter.sex?.equals(this.sex)
+        }
     }
 }

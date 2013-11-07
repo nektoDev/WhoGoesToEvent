@@ -23,6 +23,15 @@
                         <label for="eventLink">ID группы или события ВКонтакте</label>
                         <g:textField name="filter.eventID" id="eventLink" class="form-control" placeholder="Например: insane_tea"/>
                     </div>
+                    <div class="form-group">
+                        <label for="sex">Пол</label> <br/>
+                        <g:radio name="filter.sex" value="1" id="female-sex-radio"/>
+                        <label for="female-sex-radio">Ж</label>
+                        <g:radio name="filter.sex" value="2" id="male-sex-radio"/>
+                        <label for="male-sex-radio">М</label>
+                        <g:radio name="filter.sex" value="" id="all-sex-radio" checked="true"/>
+                        <label for="all-sex-radio">Все</label>
+                    </div>
 
                     <g:submitButton name="find"
                                     value="Искать"

@@ -11,6 +11,7 @@ class SearchController {
 
     def search() {
         Filter filter = new Filter(params?.filter);
+        print filter.sex;
         List<VkUser> vkUserList = grailsApplication.mainContext.getBean('searchService').searchUsers(filter);
 
         render(template:"layouts/vkUserListTmpl", model: [vkUserList: vkUserList, page: 2]) ;
