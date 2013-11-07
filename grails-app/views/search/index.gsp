@@ -11,28 +11,24 @@
     <div class="row">
         <div class="col-md-4">
             <div class="bs-sidebar hidden-print affix" id="sidebar" >
-                <g:form url="[action: 'search']" >
+                <g:formRemote name="search"
+                              url="[action: 'search']"
+                              update="userlist"
+                              onLoading="jQuery('#spinner').modal('show');"
+                              onComplete="jQuery('#spinner').modal('hide');">
+
                     <h2>Параметры</h2>
+
                     <div class="form-group">
                         <label for="eventLink">ID группы или события ВКонтакте</label>
                         <g:textField name="filter.eventID" id="eventLink" class="form-control" placeholder="Например: insane_tea"/>
                     </div>
 
-                    <g:submitToRemote value="Искать2"
-                                      class="btn btn-primary"
-                                      url="[action: 'search2']"
-                                      update="userlist"
-                                      onLoading="jQuery('#spinner').modal('show');"
-                                      onComplete="jQuery('#spinner').modal('hide');"
-                    />
-                    <g:submitToRemote value="Искать"
-                                      class="btn btn-primary"
-                                      url="[action: 'search']"
-                                      update="userlist"
-                                      onLoading="jQuery('#spinner').modal('show');"
-                                      onComplete="jQuery('#spinner').modal('hide');"
-                    />
-                </g:form>
+                    <g:submitButton name="find"
+                                    value="Искать"
+                                    class="btn btn-primary"/>
+
+                </g:formRemote>
             </div>
         </div>
 

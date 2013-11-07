@@ -11,12 +11,16 @@
 }
 
 .user-photo {
+    margin: auto !important;
 }
 
-.user-photo:hover {
-    box-shadow: 0 0 0 5px #d9d9d9;
-    opacity: 0.95;
-    /*background-color: black;*/
+.female .user-photo:hover {
+    box-shadow: 0 0 0 4px rgba(253, 173, 186, 0.5);
+    opacity: 0.85;
 }
 
+.male .user-photo:hover {
+    box-shadow: 0 0 0 4px rgba(94, 163, 214, 0.49);
+    opacity: 0.85;
+}
 
