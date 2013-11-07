@@ -29,4 +29,8 @@ class VkUser {
                 ", sex=" + sex +
                 '}';
     }
+
+    boolean compareWithFilter(Filter filter) {
+        return this.sex.equals(filter.getSex())
+    }
 }

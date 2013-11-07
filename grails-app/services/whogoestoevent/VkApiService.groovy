@@ -31,7 +31,7 @@ class VkApiService {
     }
 
     def groupsGetMembers(String id, Integer count = 1000, Integer offset = 0) {
-        http.get(path: 'groups.getMembers', query: [group_id: id, count: count, offset: 0, order: 'asc'])
+        http.get(path: 'groups.getMembers', query: [group_id: id, count: count, offset: 0, order: 'time_asc'])
                 { resp, json ->
                     return json.response;
                 }

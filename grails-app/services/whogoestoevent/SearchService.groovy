@@ -7,10 +7,14 @@ class SearchService implements Serializable{
 
     List<VkUser> vkUserList;
 
+    Filter filter;
+
+    Integer offset = 0;
+
     List<VkUser> searchUsers(Filter filter) {
-
+        this.filter = filter;
         vkUserList = groupsGetAllMembers(filter.eventID);
-
+        this.offset = 15;
         return getUsersAt([0..14]);
     }
 
@@ -44,6 +48,27 @@ class SearchService implements Serializable{
             Thread.sleep(350);
         };
 
+        return result;
+    }
+
+    public List<VkUser> getNextPage(Integer count = 15) {
+        List<VkUser> result = new ArrayList<VkUser>();
+        Integer i =0;
+        vkUserList.getAt([this.offset..-1]).each() {
+            print i++;
+            it = vkApiService.usersGet(it.getId(), it);
+            if (it.compareWithFilter(this.filter)) {
+                result.add(it)
+            }
+
+            if (result.size() >= count) {
+                offset += result.size()
+                return result;
+            }
+
+            Thread.sleep(350);
+        }
+        offset += result.size()
         return result;
     }
 }
