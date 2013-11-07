@@ -7,7 +7,7 @@
     <g:form id="more">
         <g:hiddenField name="page" id="page" value="${page}"/>
         <g:submitToRemote value="Еще"
-                          class="btn btn-primary col-md-12"
+                          class="btn btn-primary btn-lg btn-block"
                           url="[action: 'loadPage']"
                           update="page_${page}"
                           onLoading="jQuery('#spinner').modal('show');"
