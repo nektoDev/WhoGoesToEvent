@@ -54,13 +54,12 @@ class SearchService implements Serializable{
         List<VkUser> result = new ArrayList<VkUser>();
 
         for (Integer i = this.offset; i< vkUserList.size()-1; i++) {
-            print i;
             vkUserList.set(i, vkApiService.usersGet(vkUserList.get(i).getId(), vkUserList.get(i)));
-            print(vkUserList.get(i).compareWithFilter(this.filter))
+
             if (vkUserList.get(i).compareWithFilter(this.filter)) {
                 result.add(vkUserList.get(i))
             }
-            print(result.size() >= count)
+
             if (result.size() >= count) {
                 offset += result.size()
                 return result;
