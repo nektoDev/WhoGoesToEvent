@@ -1,9 +1,6 @@
 package whogoestoevent
 
-import grails.converters.JSON
 import groovyx.net.http.HTTPBuilder
-import whogoestoevent.VkUser
-
 /**
  * Created with IntelliJ IDEA.
  * User: Viacheslav
@@ -16,19 +13,21 @@ import whogoestoevent.VkUser
 class VkApiService {
     def http = new HTTPBuilder("https://api.vk.com/method/")
 
-    VkUser usersGet(String id, VkUser vkUser = new VkUser()) {
+    public static final String ACCESS_TOKEN="e00ca82c9ec6d4b285615f0b770d8e5bb5f21c600440901620483743159b303f4997dbb5cd1a5734b260c"
 
-        http.get(path: 'users.get', query: [user_ids: id, v: 5.2, fields:"photo_200,city,sex"])
+    List<VkUser> getGroupsMembers(String id, Integer count = 1000, Integer offset = 0) {
+        http.get(path: 'execute.groupsMembers', query: [group_id: id, count: count, offset: 0, access_token: ACCESS_TOKEN])
                 { resp, json ->
-                    def userJSON = json.response[0];
-                    vkUser = convertVkUser(userJSON, vkUser)
-                    return vkUser;
-                }
+                    def users = json.response;
+                    List<VkUser> result = new ArrayList<>();
+                    for (def userJSON : users) {
+                        result.add(convertVkUser(userJSON));
+                    }
+
+                    return result;
+                } as List<VkUser>
     }
 
-    VkUser usersGet(Integer id) {
-        usersGet(id.toString());
-    }
 
     def groupsGetMembers(String id, Integer count = 1000, Integer offset = 0) {
         http.get(path: 'groups.getMembers', query: [group_id: id, count: count, offset: 0, order: 'time_asc'])
@@ -37,8 +36,10 @@ class VkApiService {
                 }
     }
 
-    private VkUser convertVkUser(userJSON,VkUser vkUser) {
-        vkUser.id = userJSON.id;
+    private VkUser convertVkUser(userJSON) {
+        VkUser vkUser = new VkUser();
+
+        vkUser.id = userJSON.uid;
         vkUser.lastName = userJSON.last_name;
         vkUser.firstName = userJSON.first_name;
         vkUser.sex = userJSON.sex;
@@ -47,6 +48,4 @@ class VkApiService {
 
         return vkUser;
     }
-
-
 }
