@@ -25,4 +25,20 @@ class VkUser {
 
         return result;
     }
+
+
+    @Override
+    public String toString() {
+        return "VkUser{" +
+                "version=" + version +
+                ", id='" + id + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", photo200='" + photo200 + '\'' +
+                ", city='" + city + '\'' +
+                ", sex=" + sex +
+                ", age=" + age +
+                ", birthdate=" + birthdate +
+                '}';
+    }
 }
