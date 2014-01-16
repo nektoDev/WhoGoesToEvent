@@ -33,6 +33,12 @@
                         <label for="all-sex-radio">Все</label>
                     </div>
 
+                    <div class="form-group">
+                        <label for="age">Возраст</label> <br/>
+                        <g:textField name="filter.age" value="" maxlength="2"/>
+
+                    </div>
+
                     <g:submitButton name="find"
                                     value="Искать"
                                     class="btn btn-primary"/>
