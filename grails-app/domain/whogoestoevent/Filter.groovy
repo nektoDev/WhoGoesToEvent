@@ -4,6 +4,7 @@ class Filter {
     String eventID = "farbar";
     Byte sex;
     String age;
+    Boolean showWithoutAge;
 
     static constraints = {
     }

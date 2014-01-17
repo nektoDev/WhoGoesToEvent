@@ -45,6 +45,10 @@
                         <b>99</b>
 
                     </div>
+                    <div class="form-group">
+                        <g:checkBox name="filter.show-without-age" value="true" id="show-without-age"/>
+                        <label for="show-without-age">Показывать если возраста нет?</label>
+                    </div>
 
                     <g:submitButton name="find"
                                     value="Искать"
