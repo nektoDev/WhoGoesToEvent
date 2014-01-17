@@ -30,9 +30,9 @@
 
     <g:layoutBody/>
 
-<hr>
+    <hr>
 
-<g:render template="/layouts/footer"/>
+    <g:render template="/layouts/footer"/>
 </div> <!-- /container -->
 
 <div class="modal fade" id="spinner" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -42,6 +42,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabel">Загружаем данные</h4>
             </div>
+
             <div class="modal-body">
                 Пожалуйста подождите...
             </div>
@@ -51,10 +52,5 @@
 
 <g:javascript library="application"/>
 <r:layoutResources/>
-<script type="text/javascript">
-    jQuery(document).ready( function(){
-        jQuery('.slider').slider();
-    });
-</script>
 </body>
 </html>
