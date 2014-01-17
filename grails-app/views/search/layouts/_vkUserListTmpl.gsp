@@ -1,5 +1,4 @@
-
-<g:each in="${vkUserList}" var="u">
+<g:each in="${vkUserList}" id="user-list" var="u">
     <tmpl:layouts/vkUser user="${u}"/>
 </g:each>
 

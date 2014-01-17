@@ -14,13 +14,43 @@
     margin: auto !important;
 }
 
-.female .user-photo:hover {
+.female:hover {
     box-shadow: 0 0 0 4px rgba(253, 173, 186, 0.5);
     opacity: 0.85;
 }
 
-.male .user-photo:hover {
+.male:hover {
     box-shadow: 0 0 0 4px rgba(94, 163, 214, 0.49);
     opacity: 0.85;
 }
 
+.img-wrap {
+    position: relative;
+    margin: auto !important;
+    width: 200px;
+    height: 200px;
+}
+
+.cover {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.60);
+    color: #fff;
+    text-align: center;
+
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+}
+
+.img-wrap:hover .cover {
+    visibility: visible;
+    opacity: 1;
+}
