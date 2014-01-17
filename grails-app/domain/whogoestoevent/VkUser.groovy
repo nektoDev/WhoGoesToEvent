@@ -5,10 +5,11 @@ class VkUser {
     String firstName;
     String lastName;
     String photo200;
-    String city;
+    String cityId;
     Byte sex;
     Byte age;
     Date birthdate;
+    String city;
 
     static constraints = {
     }
@@ -38,10 +39,11 @@ class VkUser {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", photo200='" + photo200 + '\'' +
-                ", city='" + city + '\'' +
+                ", cityId='" + cityId + '\'' +
                 ", sex=" + sex +
                 ", age=" + age +
                 ", birthdate=" + birthdate +
+                ", city='" + city + '\'' +
                 '}';
     }
 }

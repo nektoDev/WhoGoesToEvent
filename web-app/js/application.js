@@ -8,6 +8,6 @@ if (typeof jQuery !== 'undefined') {
 	})(jQuery);
 }
 
-jQuery(document).ready(function () {
-    jQuery('.slider').slider();
+$(document).ready(function () {
+    $('.slider').slider();
 });

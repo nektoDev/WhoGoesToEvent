@@ -50,7 +50,7 @@
 
                 <div class="checkbox">
                     <label>
-                        <g:checkBox name="filter.show-without-age" value="true" id="show-without-age"/>
+                        <g:checkBox name="filter.showWithoutAge" value="true"/>
                         Показывать если возраста нет?
                     </label>
                 </div>

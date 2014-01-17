@@ -10,6 +10,8 @@ import groovyx.net.http.HTTPBuilder
 
 
 class VkApiService {
+    def cityService;
+
     def http = new HTTPBuilder("https://api.vk.com/method/")
 
     public static final String ACCESS_TOKEN="02280026eb664df452b52135e3d3d64b8d08b57e394cb52d03e3b9319f69c80d330dc8d4171f3fc2ad67b"
@@ -34,6 +36,13 @@ class VkApiService {
                 }
     }
 
+    def placesGetCities(String cids) {
+        http.get(path: 'places.getCityById', query: [cids: cids])
+                { resp, json ->
+                    return json.response;
+                }
+    }
+
     private VkUser convertVkUser(userJSON) {
         VkUser vkUser = new VkUser();
 
@@ -42,7 +51,7 @@ class VkApiService {
         vkUser.firstName = userJSON.first_name;
         vkUser.sex = userJSON.sex;
         vkUser.photo200 = userJSON.photo_200;
-        vkUser.city = userJSON.city;
+        vkUser.cityId = userJSON.city;
         vkUser.birthdate = convertDate(userJSON.bdate);
         vkUser.age = vkUser.birthdate?.age;
         return vkUser;
@@ -57,4 +66,6 @@ class VkApiService {
             }
         }
     }
+
+
 }
