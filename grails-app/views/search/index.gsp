@@ -35,7 +35,7 @@
 
                     <div class="form-group">
                         <label for="age">Возраст</label> <br/>
-                        <g:textField name="filter.age" value="" maxlength="2"/>
+                        <g:textField name="filter.age" class="form-control" value="" maxlength="2"/>
 
                     </div>
 

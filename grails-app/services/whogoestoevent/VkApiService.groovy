@@ -12,7 +12,7 @@ import groovyx.net.http.HTTPBuilder
 class VkApiService {
     def http = new HTTPBuilder("https://api.vk.com/method/")
 
-    public static final String ACCESS_TOKEN="e00ca82c9ec6d4b285615f0b770d8e5bb5f21c600440901620483743159b303f4997dbb5cd1a5734b260c"
+    public static final String ACCESS_TOKEN="02280026eb664df452b52135e3d3d64b8d08b57e394cb52d03e3b9319f69c80d330dc8d4171f3fc2ad67b"
 
     List<VkUser> getGroupsMembers(String id, Integer count = 1000, Integer offset = 0) {
         http.get(path: 'execute.groupsMembers', query: [group_id: id, count: count, offset: offset, access_token: ACCESS_TOKEN])
@@ -22,7 +22,6 @@ class VkApiService {
                     for (def userJSON : users) {
                         result.add(convertVkUser(userJSON));
                     }
-
                     return result;
                 } as List<VkUser>
     }
