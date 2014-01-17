@@ -18,9 +18,8 @@ class VkUser {
         if (filter.sex != null) {
             result = filter.sex?.equals(this.sex) && result;
         }
-
         if (filter.age != null) {
-            result = filter.age?.equals(this.age) && result;
+            result = filter.getAgeFrom() <= this.age && filter.getAgeTo() >= this.age && result;
         }
 
         return result;

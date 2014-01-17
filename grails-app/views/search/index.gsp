@@ -24,7 +24,7 @@
                         <g:textField name="filter.eventID" id="eventLink" class="form-control" placeholder="Например: insane_tea"/>
                     </div>
                     <div class="form-group">
-                        <label for="sex">Пол</label> <br/>
+                        <label for="filter.sex">Пол</label> <br/>
                         <g:radio name="filter.sex" value="1" id="female-sex-radio"/>
                         <label for="female-sex-radio">Ж</label>
                         <g:radio name="filter.sex" value="2" id="male-sex-radio"/>
@@ -34,8 +34,15 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="age">Возраст</label> <br/>
-                        <g:textField name="filter.age" class="form-control" value="" maxlength="2"/>
+                        <label for="filter.age">Возраст</label> <br/>
+
+                        <b>0</b>
+                        <g:textField name="filter.age" type="text" class="slider form-control"
+                               data-slider-min="0" data-slider-max="99"
+                               data-slider-step="1" data-slider-value="[0, 99]"
+                               data-slider-orientation="horizontal" data-slider-selection="before"
+                               data-slider-tooltip="show"/>
+                        <b>99</b>
 
                     </div>
 

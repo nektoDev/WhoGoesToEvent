@@ -10,6 +10,7 @@ class SearchController {
 
     def search() {
         Filter filter = new Filter(params?.filter);
+        print(filter.age)
         grailsApplication.mainContext.getBean('searchService').initUserList(filter)
         List<VkUser> vkUserList = grailsApplication.mainContext.getBean('searchService').getNextPage();
 

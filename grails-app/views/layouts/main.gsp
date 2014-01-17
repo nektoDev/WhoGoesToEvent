@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'bootstrap.css')}" type="text/css">
+    <link rel="stylesheet" href="${resource(dir: 'css', file: 'slider.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'round-about.css')}" type="text/css">
     <g:layoutHead/>
     <r:layoutResources/>
@@ -50,6 +51,10 @@
 
 <g:javascript library="application"/>
 <r:layoutResources/>
-
+<script type="text/javascript">
+    jQuery(document).ready( function(){
+        jQuery('.slider').slider();
+    });
+</script>
 </body>
 </html>
