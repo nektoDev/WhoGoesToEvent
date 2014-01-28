@@ -1,3 +1,5 @@
+<g:set var="relationService" bean="relationService"/>
+
 <div class="col-lg-4 col-sm-6" id="user-wrap">
     <div class="img-wrap">
         <a href="http://vk.com/id${user?.id}">
@@ -7,6 +9,7 @@
                 <h3>${user?.age ? user?.age : ' '}</h3>
 
                 <p>г. ${user?.city}</p>
+                <p>${relationService.getRelationById(user?.relation).description}</p>
             </div>
         </a>
     </div>

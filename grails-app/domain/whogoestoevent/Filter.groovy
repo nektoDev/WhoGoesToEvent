@@ -1,10 +1,11 @@
 package whogoestoevent
 
 class Filter {
-    String eventID = "farbar";
+    String eventID;
     Byte sex;
     String age;
     Boolean showWithoutAge;
+    String relation;
 
     static constraints = {
     }

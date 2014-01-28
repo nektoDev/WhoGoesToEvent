@@ -10,6 +10,7 @@ class VkUser {
     Byte age;
     Date birthdate;
     String city;
+    String relation;
 
     static constraints = {
     }
@@ -27,6 +28,10 @@ class VkUser {
             }
         }
 
+        if (filter.relation != null) {
+            result = filter.relation.equals(this.relation) && result
+        }
+
         return result;
     }
 
@@ -34,8 +39,7 @@ class VkUser {
     @Override
     public String toString() {
         return "VkUser{" +
-                "version=" + version +
-                ", id='" + id + '\'' +
+                "id='" + id + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", photo200='" + photo200 + '\'' +
@@ -44,6 +48,7 @@ class VkUser {
                 ", age=" + age +
                 ", birthdate=" + birthdate +
                 ", city='" + city + '\'' +
+                ", relation='" + relation + '\'' +
                 '}';
     }
 }

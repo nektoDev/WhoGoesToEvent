@@ -7,6 +7,7 @@
 </head>
 
 <body>
+<g:set var="relationService" bean="relationService"/>
 
 <div class="row">
     <div class="col-md-4">
@@ -55,6 +56,11 @@
                     </label>
                 </div>
 
+                <div class="form-group">
+                    <label for="relation">Семейное положение</label>
+                    <g:select class="form-control" id="relation" name="filter.relation" from="${relationService?.relations}" optionKey="code" optionValue="description"/>
+                </div>
+                
                 <g:submitButton name="find"
                                 value="Искать"
                                 class="btn btn-primary"/>
