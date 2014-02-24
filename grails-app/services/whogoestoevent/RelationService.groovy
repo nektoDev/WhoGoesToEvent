@@ -13,6 +13,7 @@ class RelationService {
     @PostConstruct
     def init() {
         relations = new ArrayList<>()
+        relations.add(new Relation(0, "все"));
         relations.add(new Relation(1, "не женат/не замужем"));
         relations.add(new Relation(2, "есть друг/есть подруга"));
         relations.add(new Relation(3, "помолвлен/помолвлена"));
@@ -23,13 +24,15 @@ class RelationService {
     }
 
     public Relation getRelationById(String id) {
-        for (Relation rel in relations) {
-            if (rel?.getCode()?.toString()?.equalsIgnoreCase(id)) {
+        if (!"0".equalsIgnoreCase(id)) {
+            for (Relation rel in relations) {
+                if (rel?.getCode()?.toString()?.equalsIgnoreCase(id)) {
 
-                return rel
+                    return rel
+                }
             }
         }
 
-        return new Relation(id as Integer, "Неизвестно")
+        return new Relation(id as Integer, "??")
     }
 }

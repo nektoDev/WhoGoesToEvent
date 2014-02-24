@@ -6,9 +6,9 @@
             <g:img class="img-circle img-responsive user-photo"
                    uri="${user?.photo200 ?: user?.sex == 1 ? '/images/nophoto-female.png' : '/images/nophoto-male.png'}"/>
             <div class="cover img-circle img-responsive ${user?.sex == 1 ? 'female' : 'male'}">
-                <h3>${user?.age ? user?.age : ' '}</h3>
+                <h3>${user?.age ? user?.age : '??'}</h3>
 
-                <p>г. ${user?.city}</p>
+                <p>${user?.city == null ? "г. ?? ": "г. " + user?.city}</p>
                 <p>${relationService.getRelationById(user?.relation).description}</p>
             </div>
         </a>

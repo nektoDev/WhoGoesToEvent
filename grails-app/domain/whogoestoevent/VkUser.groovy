@@ -28,7 +28,7 @@ class VkUser {
             }
         }
 
-        if (filter.relation != null) {
+        if (filter.relation != null && filter.relation != 0) {
             result = filter.relation.equals(this.relation) && result
         }
 
