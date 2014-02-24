@@ -14,7 +14,7 @@ class VkApiService {
 
     def http = new HTTPBuilder("https://api.vk.com/method/")
 
-    public static final String ACCESS_TOKEN="e0d62b8657a321894f482c52869fdce0af47a08d1f03cd60e77f7b70a01c17e014f88b2b115aaf0dd2750"
+    public static final String ACCESS_TOKEN="d8ab8a0a1dd52e2b2047d2c114708bd7dff1805f636e6e8a52124ea0e386bc010977d4f20c8cf97c041f2"
 
     List<VkUser> getGroupsMembers(String id, Integer count = 1000, Integer offset = 0) {
         http.get(path: 'execute.groupsMembers', query: [group_id: id, count: count, offset: offset, access_token: ACCESS_TOKEN])
@@ -67,6 +67,4 @@ class VkApiService {
             }
         }
     }
-
-
 }
