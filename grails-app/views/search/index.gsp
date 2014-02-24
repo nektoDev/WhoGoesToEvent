@@ -77,6 +77,12 @@
 
         <p>If you need a bit more space to describe what is going on, we recommend putting a picture in this section. Use the <code>pull-right</code> class on the image to make it look good!
         </p>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
 
         <h2 class="page-header">Название события</h2>
 
