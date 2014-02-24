@@ -1,7 +1,7 @@
 <g:each in="${vkUserList}" id="user-list" var="u">
     <tmpl:layouts/vkUser user="${u}"/>
 </g:each>
-
+<div class="clearfix"></div>
 <div id="page_${page}">
     <g:form id="more">
         <g:hiddenField name="page" id="page" value="${page}"/>
