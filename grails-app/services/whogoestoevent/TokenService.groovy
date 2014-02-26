@@ -8,6 +8,8 @@ import ru.nektodev.whogoestoevent.exception.NeedAuthorizationException
 class TokenService implements Serializable {
     static scope = "session"
 
+    def grailsApplication
+
     private String accessToken;
     def session
     HTTPBuilder http;
@@ -30,9 +32,11 @@ class TokenService implements Serializable {
     }
 
     public def requestToken(String code) {
+
         http.request(Method.GET) { req ->
             uri.path = 'access_token'
-            uri.query = [client_id: '3973980', client_secret: 'EAyHomAjJrkNHc5XOj5E', redirect_uri: 'http://localhost:8080/WhoGoesToEvent/authentication/success', code: code]
+            def vkontakte = grailsApplication.config.oauth.providers.vkontakte
+            uri.query = [client_id: vkontakte.key, client_secret: vkontakte.secret, redirect_uri: vkontakte.callback, code: code]
             response.success = { resp, json ->
                 accessToken = json.access_token
 
