@@ -39,7 +39,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <button type="button" class="close" data-dismiss="modal" data-backdrop="static" data-keyboard="false" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabel">Загружаем данные</h4>
             </div>
 
@@ -49,7 +49,12 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+<g:javascript>
+    if (jQuery('#load-status').val() == 'fail') {
+        jQuery('#spinner').modal('show');
+    }
 
+</g:javascript>
 <g:javascript library="application"/>
 <r:layoutResources/>
 </body>

@@ -26,8 +26,7 @@ class SearchService implements Serializable{
         while (vkUserList.size() < count) {
             i = count - vkUserList.size();
             Integer loadingCount = i > 1000 ? 1000 : i;
-
-            List<VkUser> members = vkApiService.getGroupsMembers(filter.eventID, loadingCount, vkUserList.size())
+            List<VkUser> members = vkApiService.getGroupsMembers(filter.eventID, loadingCount, vkUserList.size()) //TODO if null
             for (VkUser member : members) {
                 if (member.compareWithFilter(filter)) {
                     filteredList.add(member);

@@ -1,5 +1,7 @@
 package whogoestoevent
+
 import groovyx.net.http.HTTPBuilder
+
 /**
  * Created with IntelliJ IDEA.
  * User: Viacheslav
@@ -10,37 +12,39 @@ import groovyx.net.http.HTTPBuilder
 
 
 class VkApiService {
-    def cityService;
+    def tokenService
 
     def http = new HTTPBuilder("https://api.vk.com/method/")
 
-    public static final String ACCESS_TOKEN="d8ab8a0a1dd52e2b2047d2c114708bd7dff1805f636e6e8a52124ea0e386bc010977d4f20c8cf97c041f2"
+    public List<VkUser> getGroupsMembers(String id, Integer count = 1000, Integer offset = 0) {
+        def token = tokenService.getVkAccessToken()
+        if (token == null || token.isEmpty()) {
+            return new ArrayList<VkUser>();
+            //TODO
+        }
+        http.get(path: 'execute.groupsMembers', query: [group_id: id, count: count, offset: offset, access_token: token]) { resp, json ->
+            def users = json.response;
+            List<VkUser> result = new ArrayList<>();
+            for (def userJSON : users) {
+                result.add(convertVkUser(userJSON));
+            }
+            return result;
+        } as List<VkUser>
 
-    List<VkUser> getGroupsMembers(String id, Integer count = 1000, Integer offset = 0) {
-        http.get(path: 'execute.groupsMembers', query: [group_id: id, count: count, offset: offset, access_token: ACCESS_TOKEN])
-                { resp, json ->
-                    def users = json.response;
-                    List<VkUser> result = new ArrayList<>();
-                    for (def userJSON : users) {
-                        result.add(convertVkUser(userJSON));
-                    }
-                    return result;
-                } as List<VkUser>
     }
 
 
-    def groupsGetMembers(String id, Integer count = 1000, Integer offset = 0) {
+    public def groupsGetMembers(String id, Integer count = 1000, Integer offset = 0) {
         http.get(path: 'groups.getMembers', query: [group_id: id, count: count, offset: 0, sort: 'time_asc'])
                 { resp, json ->
                     return json.response;
                 }
     }
 
-    def placesGetCities(String cids) {
-        http.get(path: 'places.getCityById', query: [cids: cids])
-                { resp, json ->
-                    return json.response;
-                }
+    public def placesGetCities(String cids) {
+        http.get(path: 'places.getCityById', query: [cids: cids]) { resp, json ->
+            return json.response;
+        }
     }
 
     private VkUser convertVkUser(userJSON) {
@@ -63,7 +67,7 @@ class VkApiService {
             return null;
         } else {
             if (date.matches($/\d{1,2}\.\d{1,2}\.\d{4}/$)) {
-               return new Date().parse("d.M.yyyy", date);
+                return new Date().parse("d.M.yyyy", date);
             }
         }
     }

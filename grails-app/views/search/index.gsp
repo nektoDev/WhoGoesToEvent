@@ -22,7 +22,7 @@
 
                 <div class="form-group">
                     <label for="eventLink">ID группы или события ВКонтакте</label>
-                    <g:textField name="filter.eventID" id="eventLink" class="form-control"
+                    <g:textField name="filter.eventID" id="eventLink" class="form-control" required="true"
                                  placeholder="Например: insane_tea"/>
                 </div>
 
@@ -88,7 +88,6 @@
 
         <div class="row" id="userlist">
         </div>
-
     </div>
 </div>
 
