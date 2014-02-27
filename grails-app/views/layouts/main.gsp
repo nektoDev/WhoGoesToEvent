@@ -9,6 +9,7 @@
     <meta name="author" content="NektoDev">
 
     <title><g:layoutTitle default="Grails"/></title>
+    <g:javascript library="jquery" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="${resource(dir: 'images', file: 'favicon.ico')}" type="image/x-icon">
@@ -20,10 +21,19 @@
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'slider.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'round-about.css')}" type="text/css">
     <g:layoutHead/>
+
     <r:layoutResources/>
 </head>
 
 <body>
+<jqui:resources/>
+<style>
+    .navbar {
+        background-color: #82AFD6 !important;
+        border-color: rgba(92, 124, 152, 1) !important;
+    }
+</style>
+
 <g:render template="/layouts/header"/>
 
 <div class="container">
@@ -49,12 +59,7 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-<g:javascript>
-    if (jQuery('#load-status').val() == 'fail') {
-        jQuery('#spinner').modal('show');
-    }
 
-</g:javascript>
 <g:javascript library="application"/>
 <r:layoutResources/>
 </body>

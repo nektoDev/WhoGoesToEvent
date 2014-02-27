@@ -1,3 +1,5 @@
+import org.scribe.builder.api.VkontakteApi
+
 // locations to search for config files that get merged into the main config;
 // config files can be ConfigSlurper scripts, Java properties files, or classes
 // in the classpath in ConfigSlurper format
@@ -114,3 +116,17 @@ log4j = {
            'net.sf.ehcache.hibernate'
 }
 grails.views.gsp.encoding="UTF-8"
+
+oauth {
+    providers {
+        vkontakte {
+            api = VkontakteApi
+            key = '3973980'
+            secret = 'EAyHomAjJrkNHc5XOj5E'
+            successUri = '/authentication/success'
+            failureUri = '/fail'
+            callback = 'http://localhost:8080/WhoGoesToEvent/authentication/success'
+        }
+
+    }
+}

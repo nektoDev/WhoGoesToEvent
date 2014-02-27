@@ -1,10 +1,14 @@
 package whogoestoevent
 
+import jprogress.ProgressService
+
 class SearchService implements Serializable{
     static scope = 'session'
+    public static final int SLEEP_TIME = 350 //VK doesn't allow more than 3 request per second.
 
     def vkApiService;
     def cityService;
+    ProgressService progressService;
 
     List<VkUser> vkUserList;
     List<VkUser> filteredList;
@@ -21,12 +25,18 @@ class SearchService implements Serializable{
         def response = vkApiService.groupsGetMembers(filter.eventID, 1);
 
         Integer count = response.count as Integer;
+        println count;
         def i;
+        Long start;
+        Long timer;
         HashSet<String> unknownCities = new HashSet<>();
         while (vkUserList.size() < count) {
+            start = System.currentTimeMillis();
             i = count - vkUserList.size();
+            print vkUserList.size()
             Integer loadingCount = i > 1000 ? 1000 : i;
             List<VkUser> members = vkApiService.getGroupsMembers(filter.eventID, loadingCount, vkUserList.size()) //TODO if null
+
             for (VkUser member : members) {
                 if (member.compareWithFilter(filter)) {
                     filteredList.add(member);
@@ -39,7 +49,14 @@ class SearchService implements Serializable{
                 }
             }
             vkUserList.addAll(members);
-            Thread.sleep(350);
+
+            timer = System.currentTimeMillis() - start
+            if (timer < SLEEP_TIME) {
+                Thread.sleep(SLEEP_TIME - timer);
+            }
+            progressService.
+            progressService.setProgressBarValue("123", (vkUserList.size()*100)/count);
+
         }
         if (!unknownCities?.empty) {
             defineUnknownCities(unknownCities);
@@ -59,12 +76,29 @@ class SearchService implements Serializable{
 
     private void defineUnknownCities(HashSet<String> unknownCities) {
         StringBuilder cids = new StringBuilder();
-        for (String id : unknownCities) {
+        int i = 0;
+        Long start;
+        Long timer;
+        for (String id in unknownCities) {
+            start = System.currentTimeMillis();
             cids.append(id);
             cids.append(",");
+            i++;
+            print i;
+            if (i>=100) {
+                cityService.addCities(cids.toString());
+                cids = new StringBuilder();
+                i=0;
+                timer = System.currentTimeMillis() - start
+                if (timer < SLEEP_TIME) {
+                    Thread.sleep(SLEEP_TIME - timer);
+                }
+            }
         }
 
-        cityService.addCities(cids.toString());
+        if (cids.size() > 0) {
+            cityService.addCities(cids.toString());
+        }
 
         for (VkUser user : filteredList) {
             if (user.city == null) {

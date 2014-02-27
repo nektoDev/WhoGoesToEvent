@@ -42,6 +42,7 @@ class VkApiService {
     }
 
     public def placesGetCities(String cids) {
+
         http.get(path: 'places.getCityById', query: [cids: cids]) { resp, json ->
             return json.response;
         }

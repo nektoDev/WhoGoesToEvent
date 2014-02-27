@@ -60,6 +60,8 @@ grails.project.dependency.resolution = {
         compile ':cache:1.1.1'
         compile ':rest:0.8'
         compile ":joda-time:1.4"
+        compile ":jprogress:0.2"
+        compile ":jquery-ui:1.10.3"
 
         // plugins needed at runtime but not for compilation
         runtime ":hibernate:3.6.10.2" // or ":hibernate4:4.1.11.2"

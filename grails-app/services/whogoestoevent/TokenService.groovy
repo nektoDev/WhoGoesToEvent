@@ -48,5 +48,8 @@ class TokenService implements Serializable {
         }
     }
 
+    public boolean isToken() {
+        return !(accessToken == null || accessToken.isEmpty())
+    }
 
 }
